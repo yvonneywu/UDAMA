@@ -15,10 +15,29 @@ leveraging noisy labeled data to improve fitness estimation at scale.
 ## Data 
 We use data from the [Fenland Study](https://www.mrc-epid.cam.ac.uk/research/studies/fenland/) and the [Biobank Validation Study](https://www.mrc-epid.cam.ac.uk/research/studies/uk-biobank-validation/). We cannot publicly share this data, but it is available from the MRC Epidemiology Unit at the University of Cambridge upon reasonable request.
 
+To facilitate easier testing of our code, we provide small samples with the same vector shapes and naming conventions and put them into ``/example_data``. The input vector of activity for both pre-training and fine-tuning is a 3D tensor of dimensions [samples, timesteps, features] while the output heart rate is an 1D vector of [samples]. In particular, in ``/example_data`` we provide X = ``[2, 600, 26]`` and y = ``[2]``. 
 
 
-## Updates
-The code will be released soon. 
+## Getting started
+For development, we used `Python 3.9.7` and `TensorFlow 2.4.1`. 
+The main libraries needed to execute our code are as follows:
+
+ - keras 2.4.3
+ - matplotlib 3.5.1
+ - pandas 1.2.2
+ - scikit-learn 1.1.2
+ - numpy 1.19.5
+ - tqdm==4.62.3
+
+## Run the  code
+To run the experiments:
+```bash
+python 10_run_exp.py  -r 1 -f 3 -a1 0.9 -a2 0.1
+```
+
+## Pre-trained models
+
+We provide the best pre-trained model and its weights  in the folder ``/example_model/``. This model can be used directly to extract embeddings with ``10_run_exp.py`` and subsequently perform domain adaptation.
 
 
 ## Citation 
